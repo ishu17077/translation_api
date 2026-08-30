@@ -1,10 +1,10 @@
 class SuggestionResponse {
-  String input;
-  String? error;
-  List<String> result;
-  bool success;
+  final String input;
+  final String? error;
+  final List<String> result;
+  final bool success;
 
-  SuggestionResponse({
+  const SuggestionResponse({
     required this.error,
     required this.input,
     required this.result,

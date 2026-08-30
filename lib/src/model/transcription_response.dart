@@ -1,23 +1,23 @@
-class VoiceResponse {
-  String taskType;
-  Output output;
+class TranscriptionResponse {
+  final String taskType;
+  final TranscriptionOutput output;
 
-  VoiceResponse({required this.taskType, required this.output});
+  const TranscriptionResponse({required this.taskType, required this.output});
 
-  factory VoiceResponse.fromJson(Map<String, dynamic> map) {
-    return VoiceResponse(
+  factory TranscriptionResponse.fromJson(Map<String, dynamic> map) {
+    return TranscriptionResponse(
       taskType: map["taskType"],
-      output: Output.fromJson(map["output"]),
+      output: TranscriptionOutput.fromJson(map["output"]),
     );
   }
 }
 
-class Output {
+class TranscriptionOutput {
   String source;
 
-  Output({required this.source});
+  TranscriptionOutput({required this.source});
 
-  factory Output.fromJson(Map<String, dynamic> map) {
-    return Output(source: map["source"]);
+  factory TranscriptionOutput.fromJson(Map<String, dynamic> map) {
+    return TranscriptionOutput(source: map["source"]);
   }
 }

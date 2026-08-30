@@ -1,11 +1,11 @@
-class TranslatePayload {
-  String sourceLanguage;
-  String targetLanguage;
-  String input;
-  String task;
-  String serviceId;
-  bool track;
-  TranslatePayload({
+class TranslationPayload {
+  final String sourceLanguage;
+  final String targetLanguage;
+  final String input;
+  final String task;
+  final String serviceId;
+  final bool track;
+  const TranslationPayload({
     required this.sourceLanguage,
     required this.targetLanguage,
     required this.input,
@@ -22,5 +22,4 @@ class TranslatePayload {
     "serviceId": serviceId,
     "track": track,
   };
-
 }

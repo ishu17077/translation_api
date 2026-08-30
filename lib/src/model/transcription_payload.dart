@@ -1,12 +1,12 @@
-class VoicePayload {
-  String sourceLanguage;
-  String audioContent;
-  int samplingRate;
-  String task;
-  String domain;
-  String serviceId;
+class TranscriptionPayload {
+  final String sourceLanguage;
+  final String audioContent;
+  final int samplingRate;
+  final String task;
+  final String domain;
+  final String serviceId;
 
-  VoicePayload({
+  const TranscriptionPayload({
     required this.sourceLanguage,
     required this.audioContent,
     required this.domain,
