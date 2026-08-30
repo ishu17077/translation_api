@@ -25,10 +25,10 @@ class TranscriptionService implements ITranscriptionService {
         ).toJson(),
         "preProcessors": [],
         "postProcessors": [],
-        "track": true,
+        "track": false,
         "domain": "general",
       };
-   
+
       final res = await _dioClient.dio.post(
         _dioClient.transcriptionApiUrl,
         data: payload,
