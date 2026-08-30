@@ -20,7 +20,7 @@ class TranslationService implements ITranslationService {
         targetLanguage: targetLanguage,
         input: input,
         task: "translation",
-        serviceId: _dioClient.serviceId,
+        serviceId: _dioClient.translateServiceId,
         track: true,
       ).toJson(),
     );

@@ -1,13 +1,15 @@
 class TranscriptionResponse {
   final String taskType;
-  final TranscriptionOutput output;
+  final List<TranscriptionOutput> output;
 
   const TranscriptionResponse({required this.taskType, required this.output});
 
   factory TranscriptionResponse.fromJson(Map<String, dynamic> map) {
     return TranscriptionResponse(
       taskType: map["taskType"],
-      output: TranscriptionOutput.fromJson(map["output"]),
+      output: (map["output"] as List)
+          .map((item) => TranscriptionOutput.fromJson(item))
+          .toList(),
     );
   }
 }

@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:translation_api/src/model/transcription_payload.dart';
 import 'package:translation_api/src/model/transcription_response.dart';
 import 'package:translation_api/src/service/http_client/dio_client.dart';
@@ -14,17 +13,31 @@ class TranscriptionService implements ITranscriptionService {
     required String audioContent,
     required int samplingRate,
   }) async {
-    final res = await _dioClient.dio.post(
-      _dioClient.transcriptionApiUrl,
-      data: TranscriptionPayload(
-        audioContent: audioContent,
-        domain: "general",
-        task: "asr",
-        samplingRate: samplingRate,
-        serviceId: _dioClient.serviceId,
-        sourceLanguage: sourceLanguage,
-      ).toJson(),
-    );
-    return TranscriptionResponse.fromJson(res.data);
+    try {
+      final payload = {
+        ...TranscriptionPayload(
+          audioContent: audioContent,
+          domain: "general",
+          task: "asr",
+          samplingRate: samplingRate,
+          serviceId: _dioClient.transcribeServiceId,
+          sourceLanguage: sourceLanguage,
+        ).toJson(),
+        "preProcessors": [],
+        "postProcessors": [],
+        "track": true,
+        "domain": "general",
+      };
+   
+      final res = await _dioClient.dio.post(
+        _dioClient.transcriptionApiUrl,
+        data: payload,
+      );
+
+      return TranscriptionResponse.fromJson(res.data);
+    } catch (e) {
+      print(e);
+      throw Exception(e);
+    }
   }
 }

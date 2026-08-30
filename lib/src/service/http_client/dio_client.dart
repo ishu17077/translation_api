@@ -8,7 +8,8 @@ class DioClient {
   String transcriptionApiUrl =
       "https://admin.models.ai4bharat.org/inference/transcribe";
   String suggestionApiUrl = "https://xlit-api1.ai4bharat.org/tl";
-  String serviceId = "ai4bharat/indictrans--gpu-t4";
+  String translateServiceId = "ai4bharat/indictrans--gpu-t4";
+  String transcribeServiceId = "ai4bharat/conformer-multilingual-all--gpu-t4";
   DioClient._createInstance();
 
   factory DioClient() {
