@@ -13,8 +13,9 @@ void main() {
     final res = await translationService.translate(
       sourceLanguage: "en",
       targetLanguage: "bn",
-      input: "Hey",
+      input: "How r u?",
     );
+    print(res.output[0].target);
     expect(res.output, isNotEmpty);
   });
 }
