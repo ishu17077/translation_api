@@ -33,10 +33,8 @@ class TranscriptionService implements ITranscriptionService {
         _dioClient.transcriptionApiUrl,
         data: payload,
       );
-
       return TranscriptionResponse.fromJson(res.data);
     } catch (e) {
-      print(e);
       throw Exception(e);
     }
   }
