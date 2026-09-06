@@ -35,6 +35,7 @@ class TranscriptionService implements ITranscriptionService {
       );
       return TranscriptionResponse.fromJson(res.data);
     } catch (e) {
+      
       throw Exception(e);
     }
   }
