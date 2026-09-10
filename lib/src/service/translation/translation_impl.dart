@@ -4,7 +4,7 @@ import 'package:translation_api/src/service/http_client/dio_client.dart';
 import 'package:translation_api/src/service/translation/translation_contract.dart';
 
 class TranslationService implements ITranslationService {
-  final DioClient _dioClient = new DioClient();
+  final DioClient _dioClient = DioClient();
 
   ///{@macro translation_contract_docs}
   @override
