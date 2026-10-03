@@ -1,5 +1,5 @@
 name: translation_api
-description: "A new Flutter package project."
+description: "Reusable SIH26042 translation and offline pedagogy support package."
 version: 0.0.1+1
 publish_to: "none"
 homepage:

@@ -3,6 +3,7 @@ import 'package:translation_api/src/service/suggestion/suggestion_impl.dart';
 import 'package:translation_api/src/service/transcription/transcription_contract.dart';
 import 'package:translation_api/src/service/transcription/transcription_impl.dart';
 import 'package:translation_api/src/service/translation/translation_contract.dart';
+import 'package:translation_api/src/service/translation/translation_impl.dart';
 
 class TranslationApi {
   static TranslationApi? _instance;
@@ -16,7 +17,7 @@ class TranslationApi {
       _instance = TranslationApi._createInstance();
       _instance!.suggestionService = SuggestionService();
       _instance!.transcriptionService = TranscriptionService();
-      _instance!.transcriptionService = TranscriptionService();
+      _instance!.translationService = TranslationService();
     }
     return _instance!;
   }
