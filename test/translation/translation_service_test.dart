@@ -1,21 +1,28 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:translation_api/src/service/translation/translation_contract.dart';
-import 'package:translation_api/src/service/translation/translation_impl.dart';
+import 'package:translation_api/translation_api.dart';
 
 void main() {
-  late final ITranslationService translationService;
+  test('TranslationResponse parses API payload correctly', () {
+    final response = TranslationResponse.fromJson(
+      <String, dynamic>{
+        'taskType': 'translation',
+        'output': <Map<String, String>>[
+          <String, String>{'source': 'नमस्ते', 'target': 'Johar'},
+        ],
+      },
+    );
 
-  setUpAll(() {
-    translationService = TranslationService();
+    expect(response.taskType, 'translation');
+    expect(response.output, hasLength(1));
+    expect(response.output.first.source, 'नमस्ते');
+    expect(response.output.first.target, 'Johar');
   });
 
-  test("Checks if translatiion from text to text is working", () async {
-    final res = await translationService.translate(
-      sourceLanguage: "en",
-      targetLanguage: "bn",
-      input: "How r u?",
-    );
-    print(res.output[0].target);
-    expect(res.output, isNotEmpty);
+  test('TranslationApi initializes all services', () {
+    final api = TranslationApi();
+
+    expect(api.translationService, isA<ITranslationService>());
+    expect(api.transcriptionService, isA<ITranscriptionService>());
+    expect(api.suggestionService, isA<ISuggestionService>());
   });
 }
