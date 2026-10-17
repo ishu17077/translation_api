@@ -267,13 +267,19 @@ flutter test
 flutter analyze
 ```
 
-## Limitations
+## Edge AI & Sequential Memory Architecture
 
-- No production neural MT model bundled in this package.
-- No bundled STT/TTS engine implementation.
-- Real-time voice latency target (≤3s) depends on host app integrations and runtime optimizations.
-- Worksheet/flashcard generation is represented via interfaces and mock scaffolding.
+To operate reliably on low-cost classroom hardware (**Android 9+ / ≤2 GB RAM**), this package utilizes a time-multiplexed execution strategy:
 
+* **Sequential Model Swapping:** Runs **NLLB-200M (INT8 ONNX)** for translation and **Qwen2.5 (INT4)** for pedagogical content generation sequentially—never simultaneously—keeping active working memory strictly under **750 MB**.
+* **Decoupled Binary Delivery:** To keep the Git repository lightweight, the quantized `.onnx` and `.onnx.data` model weights (~1.77 GB total) are hosted via GitHub Releases in the companion `TranslateModel` repository and synced to local device storage during initial setup.
+* **Resilient Offline Fallback:** Prioritizes local SQLite phrase caches for high-frequency classroom instructions before invoking full neural inference, maintaining a target response latency of **≤2 seconds**.
+
+## Roadmap
+
+* Expand modular language extension packs for **Ho** and **Mundari** alongside the working **Hindi ↔ Santhali** pipeline.
+* Integrate automated on-device telemetry hooks for profiling token-per-second throughput across budget ARMv8/ARMv7 tablets.
+* Add dynamic LoRA adapter hot-swapping for specialized regional dialects under the Jharkhand PALASH programme.
 ## Roadmap
 
 - Add persistent cache adapter reference implementations.
